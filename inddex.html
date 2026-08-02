@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>質感選物所 - 線上商城</title>
+    <!-- 引入外部 CSS 樣式表 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 導覽列 -->
+    <header class="navbar">
+        <!-- 左側：Logo 與導覽分類 -->
+        <div class="nav-left">
+            <div class="logo">質感選物所</div>
+            <nav class="nav-links">
+                <a href="#" class="active">熱門商品</a>
+                <a href="#">新品上市</a>
+                <a href="#">人氣特惠</a>
+                <a href="#">品牌故事</a>
+            </nav>
+        </div>
+
+        <!-- 右側：搜尋、會員、購物車 -->
+        <div class="nav-right">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="搜尋商品...">
+            </div>
+
+            <div class="user-status" id="user-status-container">
+                <button class="btn-auth-trigger" id="open-login-btn">登入 / 註冊</button>
+            </div>
+            
+            <div class="cart-btn-trigger" id="cart-toggle-btn">
+                🛒 購物車：<span id="cart-count">0</span> 項 | 總計：$ <span id="cart-total">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要內容區 -->
+    <main class="container">
+        <h1 class="page-title" id="page-main-title">熱門商品</h1>
+        
+        <!-- 商品列表 -->
+        <div class="product-grid" id="product-list">
+            <!-- 商品將由 JavaScript 動態帶入 -->
+        </div>
+    </main>
+
+    <!-- 購物車側邊欄抽屜 (Drawer) -->
+    <div class="cart-drawer-overlay" id="cart-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h2>您的購物車</h2>
+            <button class="close-btn" id="cart-close-btn">&times;</button>
+        </div>
+        <div class="cart-items-list" id="cart-items-list">
+            <div class="cart-empty-text">購物車目前是空的</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-summary-row">
+                <span>總計金額</span>
+                <span class="summary-price">$ <span id="drawer-total">0</span></span>
+            </div>
+            <button id="checkout-btn" class="btn-primary">前往結帳</button>
+        </div>
+    </aside>
+
+    <!-- 會員登入 / 註冊 Modal 彈跳視窗 -->
+    <div class="auth-modal-overlay" id="auth-overlay"></div>
+    <div class="auth-modal" id="auth-modal">
+        <button class="close-btn" id="auth-close-btn">&times;</button>
+        
+        <!-- 登入表單 -->
+        <div class="auth-form-container" id="login-form-container">
+            <h2>會員登入</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label>電子郵件</label>
+                    <input type="email" id="login-email" required placeholder="請輸入註冊信箱">
+                </div>
+                <div class="form-group">
+                    <label>密碼</label>
+                    <input type="password" id="login-password" required placeholder="請輸入密碼">
+                </div>
+                <button type="submit" class="btn-primary">登入</button>
+            </form>
+            <p class="switch-auth-text">
+                還沒有帳號嗎？ <a href="#" id="to-register">立即註冊</a>
+            </p>
+        </div>
+
+        <!-- 註冊表單 -->
+        <div class="auth-form-container" id="register-form-container" style="display: none;">
+            <h2>註冊新會員</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label>會員名稱</label>
+                    <input type="text" id="register-name" required placeholder="您的姓名或暱稱">
+                </div>
+                <div class="form-group">
+                    <label>電子郵件</label>
+                    <input type="email" id="register-email" required placeholder="常用信箱作為帳號">
+                </div>
+                <div class="form-group">
+                    <label>密碼</label>
+                    <input type="password" id="register-password" required placeholder="設定密碼">
+                </div>
+                <button type="submit" class="btn-primary">完成註冊</button>
+            </form>
+            <p class="switch-auth-text">
+                已經有帳號了？ <a href="#" id="to-login">直接登入</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- 頁尾區塊 -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>質感選物所</h3>
+                <p>挑選生活中的美好選物，為您打造質感日常。</p>
+            </div>
+            <div class="footer-section">
+                <h4>聯絡我們</h4>
+                <p>客服信箱：service@selectshop.com</p>
+                <p>聯絡電話：(02) 1234-5678</p>
+                <p>服務時間：週一至週五 09:00 - 18:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 質感選物所 版權所有 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 引入外部 JavaScript 檔 -->
+    <script src="script.js"></script>
+</body>
+</html>
