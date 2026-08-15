@@ -518,3 +518,71 @@ body {
     font-size: 0.85rem;
     color: #64748b;
 }
+
+/* ==========================================
+   RWD 手機版導覽列與介面優化修正
+   ========================================== */
+@media screen and (max-width: 900px) {
+    /* 1. 導覽列改為垂直堆疊，並增加上下間距 */
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    /* 2. 調整導覽列左側區塊（Logo 與導覽分類） */
+    .nav-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    /* 3. 讓分類選單在手機上可以水平滾動，避免擠壓換行 */
+    .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 0.25rem;
+        gap: 1rem;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 隱藏捲軸但保持滾動功能（選填） */
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 4. 調整導覽列右側區塊（搜尋框、會員、購物車） */
+    .nav-right {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    /* 5. 讓搜尋框在手機上自動撐滿寬度 */
+    .search-box {
+        width: 100%;
+    }
+
+    .search-box input {
+        width: 100% !important;
+    }
+
+    .search-box input:focus {
+        width: 100% !important;
+    }
+
+    /* 6. 調整會員狀態與購物車按鈕排版 */
+    .user-status {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .btn-auth-trigger, 
+    .cart-btn-trigger {
+        width: 100%;
+        text-align: center;
+    }
+}
