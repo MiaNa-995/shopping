@@ -146,24 +146,12 @@ body {
     color: #2c3e50;
 }
 
-/* 修改商品網格，設定最小欄寬大一點，或限制最大寬度 */
+/* 商品列表網格 */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 280px));
     gap: 1.5rem;
-    justify-content: start; /* 讓少量商品靠左對齊，不會被強制拉寬 */
-}
-
-/* 確保單一商品卡片不會過度放大 */
-.product-card {
-    background: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    max-width: 320px; /* 限制單個卡片的最大寬度 */
+    justify-content: start;
 }
 
 /* 商品卡片 */
@@ -175,6 +163,7 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    max-width: 320px;
 }
 
 .product-card:hover {
@@ -211,7 +200,6 @@ body {
     margin-bottom: 1rem;
 }
 
-/* 按鈕樣式 */
 .btn-add {
     margin-top: auto;
     background-color: #3498db;
@@ -228,7 +216,7 @@ body {
     background-color: #2980b9;
 }
 
-/* 購物車側邊欄 (Drawer) */
+/* 購物車側邊欄 */
 .cart-drawer-overlay {
     position: fixed;
     top: 0;
@@ -274,11 +262,6 @@ body {
     border-bottom: 1px solid #edf2f7;
 }
 
-.cart-header h2 {
-    font-size: 1.2rem;
-    color: #2c3e50;
-}
-
 .close-btn {
     background: none;
     border: none;
@@ -293,12 +276,6 @@ body {
     padding: 1.5rem;
 }
 
-.cart-empty-text {
-    text-align: center;
-    color: #a0aec0;
-    margin-top: 2rem;
-}
-
 .cart-item {
     display: flex;
     justify-content: space-between;
@@ -306,24 +283,6 @@ body {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #f1f5f9;
-}
-
-.cart-item-info h4 {
-    font-size: 0.95rem;
-    color: #2d3748;
-    margin-bottom: 0.25rem;
-}
-
-.cart-item-info p {
-    font-size: 0.85rem;
-    color: #e74c3c;
-    font-weight: bold;
-}
-
-.cart-item-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
 
 .qty-btn {
@@ -337,28 +296,10 @@ body {
     color: #4a5568;
 }
 
-.qty-btn:hover {
-    background: #e2e8f0;
-}
-
 .cart-footer {
     padding: 1.5rem;
     border-top: 1px solid #edf2f7;
     background: #f8fafc;
-}
-
-.cart-summary-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #2d3748;
-}
-
-.summary-price {
-    color: #e74c3c;
 }
 
 .btn-primary {
@@ -371,14 +312,9 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.2s;
 }
 
-.btn-primary:hover {
-    background-color: #27ae60;
-}
-
-/* 會員 Modal 彈跳視窗樣式 */
+/* 會員 Modal */
 .auth-modal-overlay {
     position: fixed;
     top: 0;
@@ -388,13 +324,7 @@ body {
     background: rgba(0, 0, 0, 0.4);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
     z-index: 300;
-}
-
-.auth-modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
 }
 
 .auth-modal {
@@ -402,11 +332,10 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
-    width: 100%;
+    width: 90%;
     max-width: 400px;
     background: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     padding: 2rem;
     z-index: 301;
     opacity: 0;
@@ -420,169 +349,62 @@ body {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.auth-modal .close-btn {
-    position: absolute;
-    top: 1rem;
-    right: 1.25rem;
+/* ==========================================
+   RWD 手機版導覽列與介面優化修正
+   ========================================== */
+@media screen and (max-width: 900px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+    .nav-left {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 0.5rem;
+    }
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 1rem;
+        -webkit-overflow-scrolling: touch;
+    }
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+    .nav-right {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+    .search-box {
+        width: 100%;
+    }
+    .search-box input {
+        width: 100% !important;
+    }
+    .btn-auth-trigger, 
+    .cart-btn-trigger {
+        width: 100%;
+        text-align: center;
+    }
 }
 
-.auth-form-container h2 {
-    font-size: 1.35rem;
-    color: #2c3e50;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
-    font-size: 0.85rem;
-    color: #475569;
-    margin-bottom: 0.35rem;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 4px;
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-.form-group input:focus {
-    border-color: #3498db;
-}
-
-.switch-auth-text {
-    text-align: center;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #64748b;
-}
-
-.switch-auth-text a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-.switch-auth-text a:hover {
-    text-decoration: underline;
-}
-
-/* 頁尾樣式 */
+/* 頁尾 */
 .footer {
     background-color: #1e293b;
     color: #cbd5e1;
     margin-top: 4rem;
     padding: 3rem 1rem 1.5rem 1rem;
 }
-
 .footer-container {
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #334155;
-}
-
-.footer-section h3 {
-    color: #ffffff;
-    font-size: 1.2rem;
-    margin-bottom: 0.75rem;
-}
-
-.footer-section h4 {
-    color: #ffffff;
-    font-size: 1rem;
-    margin-bottom: 0.75rem;
-}
-
-.footer-section p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #94a3b8;
-    margin-bottom: 0.4rem;
-}
-
-.footer-bottom {
-    max-width: 1100px;
-    margin: 1.5rem auto 0 auto;
-    text-align: center;
-    font-size: 0.85rem;
-    color: #64748b;
-}
-
-/* ==========================================
-   RWD 手機版導覽列與介面優化修正
-   ========================================== */
-@media screen and (max-width: 900px) {
-    /* 1. 導覽列改為垂直堆疊，並增加上下間距 */
-    .navbar {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1rem;
-        gap: 1rem;
-    }
-
-    /* 2. 調整導覽列左側區塊（Logo 與導覽分類） */
-    .nav-left {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-    }
-
-    /* 3. 讓分類選單在手機上可以水平滾動，避免擠壓換行 */
-    .nav-links {
-        width: 100%;
-        overflow-x: auto;
-        padding-bottom: 0.25rem;
-        gap: 1rem;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* 隱藏捲軸但保持滾動功能（選填） */
-    .nav-links::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* 4. 調整導覽列右側區塊（搜尋框、會員、購物車） */
-    .nav-right {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.75rem;
-    }
-
-    /* 5. 讓搜尋框在手機上自動撐滿寬度 */
-    .search-box {
-        width: 100%;
-    }
-
-    .search-box input {
-        width: 100% !important;
-    }
-
-    .search-box input:focus {
-        width: 100% !important;
-    }
-
-    /* 6. 調整會員狀態與購物車按鈕排版 */
-    .user-status {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .btn-auth-trigger, 
-    .cart-btn-trigger {
-        width: 100%;
-        text-align: center;
-    }
 }
